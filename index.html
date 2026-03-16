@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Sakina · Breathe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design System: Golden Hour (Dark) ───────────────────── */
+    :root {
+      --bg-top:       #1a1205;
+      --bg-mid:       #2a1e08;
+      --bg-bottom:    #1e1504;
+      --bg-gradient:  linear-gradient(160deg, #1a1205 0%, #2a1e08 50%, #1e1504 100%);
+      --text:         rgba(230, 185, 70, 0.9);
+      --text-dim:     rgba(200, 155, 50, 0.55);
+      --gold-solid:   rgba(220, 165, 40, 0.9);
+      --gold-border:  rgba(220, 165, 40, 0.3);
+      --gold-muted:   rgba(220, 165, 40, 0.25);
+      --gold-faint:   rgba(220, 165, 40, 0.12);
+      --surface:      rgba(255, 200, 60, 0.06);
+      --surface-hi:   rgba(255, 200, 60, 0.09);
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      font-weight: 300;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+      padding: 52px 24px 88px;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Ember canvas ────────────────────────────────────────── */
+    #ember-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .logo-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,180,60,0.35) 0%, rgba(220,150,40,0.12) 70%, transparent 100%);
+      border: 1.5px solid var(--gold-border);
+      margin-bottom: 18px;
+      font-size: 28px;
+      box-shadow: 0 4px 28px rgba(200, 150, 50, 0.22);
+      animation: orb-pulse 3.5s ease-in-out infinite;
+    }
+
+    .app-name {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--gold-solid);
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Card ───────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 16px;
+      padding: 24px 26px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(200, 150, 50, 0.06);
+    }
+
+    .card-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-ui);
+      font-size: 0.66rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-solid);
+      margin-bottom: 12px;
+    }
+
+    .card-label .bar {
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--gold-solid);
+      opacity: 0.5;
+    }
+
+    p {
+      font-family: var(--font-ui);
+      font-weight: 300;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.85;
+    }
+
+    p + p {
+      margin-top: 12px;
+    }
+
+    strong {
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    a {
+      color: var(--gold-solid);
+      text-decoration: none;
+      font-weight: 300;
+      border-bottom: 1px solid var(--gold-muted);
+      transition: opacity 0.2s, border-color 0.2s;
+    }
+
+    a:hover {
+      opacity: 0.75;
+      border-color: var(--gold-solid);
+    }
+
+    /* ── Pill row ───────────────────────────────────────────── */
+    .pill-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 13px;
+      border-radius: 999px;
+      font-family: var(--font-ui);
+      font-size: 0.74rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-muted);
+      color: var(--gold-solid);
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    .footer-divider {
+      width: 36px;
+      height: 1px;
+      background: var(--gold-muted);
+      margin: 0 auto 22px;
+    }
+
+    .footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-ui);
+      font-size: 0.76rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      border-bottom: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s, opacity 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--gold-solid);
+      opacity: 1;
+    }
+
+    .footer a svg {
+      flex-shrink: 0;
+    }
+
+    /* ── Animations ─────────────────────────────────────────── */
+    @keyframes orb-pulse {
+      0%, 100% { box-shadow: 0 4px 28px rgba(200, 150, 50, 0.22); }
+      50%       { box-shadow: 0 4px 40px rgba(200, 150, 50, 0.42); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ember particle canvas -->
+  <canvas id="ember-canvas"></canvas>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-ring">🌬️</div>
+      <div class="app-name">Sakina · Breathe</div>
+      <h1>Privacy Policy</h1>
+      <p class="subtitle">Last updated &mdash; March 2026</p>
+    </div>
+
+    <!-- No data collected -->
+    <div class="card">
+      <div class="card-label"><span class="bar"></span>Data Collection</div>
+      <p>Sakina does not collect, store, or share any personal data.</p>
+      <div class="pill-row">
+        <span class="pill">No accounts</span>
+        <span class="pill">No sign-ins</span>
+        <span class="pill">No analytics</span>
+        <span class="pill">No tracking</span>
+      </div>
+    </div>
+
+    <!-- Local only -->
+    <div class="card">
+      <div class="card-label"><span class="bar"></span>Your Data Stays On-Device</div>
+      <p>The app runs entirely on your device. Your breathing preferences and settings are saved locally only and are never transmitted anywhere.</p>
+    </div>
+
+    <!-- AdMob -->
+    <div class="card">
+      <div class="card-label"><span class="bar"></span>Advertising</div>
+      <p>The app displays ads via <strong>Google AdMob</strong>. Google may collect device identifiers and usage data in accordance with their own privacy policy to serve relevant ads.</p>
+      <p>You can review Google&rsquo;s privacy policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+      <div class="card-label"><span class="bar"></span>Contact</div>
+      <p>If you have any questions about this privacy policy, please reach out at <a href="mailto:tantonrory@gmail.com">tantonrory@gmail.com</a>.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-divider"></div>
+      <a href="https://github.com/PixelPainter91/Sakina-PrivacyPolicy" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+        </svg>
+        View on GitHub
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Ember particle system (ported from EmberCanvas.jsx) ──────
+    const COLORS = [
+      [255, 220,  80],
+      [255, 200,  60],
+      [240, 175,  40],
+      [255, 235, 120],
+      [220, 155,  30],
+      [255, 210,  90],
+    ]
+
+    function spawnEmber(w, h, initial) {
+      const col     = COLORS[Math.floor(Math.random() * COLORS.length)]
+      const maxLife = 220 + Math.random() * 280
+      return {
+        col,
+        x:            Math.random() * w,
+        y:            initial ? Math.random() * h : h + 6,
+        speed:        0.30 + Math.random() * 0.80,
+        wobbleAmp:    0.25 + Math.random() * 1.10,
+        wobbleFreq:   0.007 + Math.random() * 0.018,
+        wobblePhase:  Math.random() * Math.PI * 2,
+        flickerRate:  0.022 + Math.random() * 0.052,
+        flickerPhase: Math.random() * Math.PI * 2,
+        baseR:        1.0   + Math.random() * 2.3,
+        maxLife,
+        life: initial ? Math.random() * maxLife : 0,
+      }
+    }
+
+    const canvas = document.getElementById('ember-canvas')
+    const ctx    = canvas.getContext('2d')
+
+    function resize() {
+      canvas.width  = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    resize()
+    window.addEventListener('resize', resize)
+
+    const embers = Array.from({ length: 55 }, () =>
+      spawnEmber(canvas.width, canvas.height, true)
+    )
+
+    function tick() {
+      const w = canvas.width
+      const h = canvas.height
+      ctx.clearRect(0, 0, w, h)
+
+      for (let i = 0; i < embers.length; i++) {
+        const e = embers[i]
+        e.life++
+        e.y -= e.speed
+        e.x += Math.sin(e.life * e.wobbleFreq + e.wobblePhase) * e.wobbleAmp
+
+        if (e.life >= e.maxLife || e.y < -10 || e.x < -15 || e.x > w + 15) {
+          embers[i] = spawnEmber(w, h, false)
+          continue
+        }
+
+        // Opacity lifecycle: quick fade-in, long sustain, fade-out
+        const lr = e.life / e.maxLife
+        let baseOp
+        if      (lr < 0.12) baseOp = lr / 0.12
+        else if (lr < 0.78) baseOp = 1
+        else                baseOp = (1 - lr) / 0.22
+
+        // Per-ember flicker
+        const flick = 0.52 + 0.48 * Math.sin(e.life * e.flickerRate + e.flickerPhase)
+        const op    = Math.max(0, Math.min(1, baseOp * flick))
+        if (op < 0.01) continue
+
+        // Size pulse
+        const r = e.baseR * (0.80 + 0.20 * Math.sin(e.life * e.flickerRate * 0.65))
+
+        const [rc, gc, bc] = e.col
+
+        // Radial glow halo
+        const glowR = r * 5.5
+        const g = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, glowR)
+        g.addColorStop(0, `rgba(${rc},${gc},${bc},${(op * 0.55).toFixed(3)})`)
+        g.addColorStop(1, `rgba(${rc},${gc},${bc},0)`)
+        ctx.beginPath()
+        ctx.arc(e.x, e.y, glowR, 0, Math.PI * 2)
+        ctx.fillStyle = g
+        ctx.fill()
+
+        // Core bright dot
+        ctx.beginPath()
+        ctx.arc(e.x, e.y, r, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255,248,210,${op.toFixed(3)})`
+        ctx.fill()
+      }
+
+      requestAnimationFrame(tick)
+    }
+
+    requestAnimationFrame(tick)
+  </script>
+</body>
+</html>
