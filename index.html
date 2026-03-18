@@ -50,7 +50,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Ember canvas ────────────────────────────────────────── */
     #ember-canvas {
       position: fixed;
       inset: 0;
@@ -67,7 +66,6 @@
       z-index: 1;
     }
 
-    /* ── Header ─────────────────────────────────────────────── */
     .header {
       text-align: center;
       margin-bottom: 44px;
@@ -115,7 +113,6 @@
       letter-spacing: 0.06em;
     }
 
-    /* ── Card ───────────────────────────────────────────────── */
     .card {
       background: var(--surface);
       border: 1px solid var(--gold-border);
@@ -178,7 +175,6 @@
       border-color: var(--gold-solid);
     }
 
-    /* ── Pill row ───────────────────────────────────────────── */
     .pill-row {
       display: flex;
       gap: 8px;
@@ -199,7 +195,6 @@
       color: var(--gold-solid);
     }
 
-    /* ── Footer ─────────────────────────────────────────────── */
     .footer {
       text-align: center;
       margin-top: 36px;
@@ -234,7 +229,6 @@
       flex-shrink: 0;
     }
 
-    /* ── Animations ─────────────────────────────────────────── */
     @keyframes orb-pulse {
       0%, 100% { box-shadow: 0 4px 28px rgba(200, 150, 50, 0.22); }
       50%       { box-shadow: 0 4px 40px rgba(200, 150, 50, 0.42); }
@@ -243,12 +237,10 @@
 </head>
 <body>
 
-  <!-- Ember particle canvas -->
   <canvas id="ember-canvas"></canvas>
 
   <div class="container">
 
-    <!-- Header -->
     <div class="header">
       <div class="logo-ring">🌬️</div>
       <div class="app-name">Sakina · Breathe</div>
@@ -274,6 +266,19 @@
       <p>The app runs entirely on your device. Your breathing preferences and settings are saved locally only and are never transmitted anywhere.</p>
     </div>
 
+    <!-- Health Data — NEW -->
+    <div class="card">
+      <div class="card-label"><span class="bar"></span>Health &amp; Wellness Data</div>
+      <p>Sakina is designed to support breathing and relaxation. The app does <strong>not</strong> collect, store, or transmit any health or wellness data. Any breathing patterns or preferences you use within the app remain entirely on your device and are never shared with us or any third party.</p>
+    </div>
+
+    <!-- Data Retention & Deletion — NEW -->
+    <div class="card">
+      <div class="card-label"><span class="bar"></span>Data Retention &amp; Deletion</div>
+      <p>We do not store any personal data on external servers. Any preferences saved by the app are stored locally on your device only and are retained for as long as the app is installed.</p>
+      <p>To delete all app data, simply <strong>uninstall Sakina</strong> from your device. This will permanently remove all locally stored preferences. If you have any questions about data deletion, you can also contact us at <a href="mailto:tantonrory@gmail.com">tantonrory@gmail.com</a>.</p>
+    </div>
+
     <!-- AdMob -->
     <div class="card">
       <div class="card-label"><span class="bar"></span>Advertising</div>
@@ -287,7 +292,6 @@
       <p>If you have any questions about this privacy policy, please reach out at <a href="mailto:tantonrory@gmail.com">tantonrory@gmail.com</a>.</p>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
       <div class="footer-divider"></div>
       <a href="https://github.com/PixelPainter91/Sakina-PrivacyPolicy" target="_blank" rel="noopener">
@@ -301,7 +305,6 @@
   </div>
 
   <script>
-    // ── Ember particle system (ported from EmberCanvas.jsx) ──────
     const COLORS = [
       [255, 220,  80],
       [255, 200,  60],
@@ -360,24 +363,19 @@
           continue
         }
 
-        // Opacity lifecycle: quick fade-in, long sustain, fade-out
         const lr = e.life / e.maxLife
         let baseOp
         if      (lr < 0.12) baseOp = lr / 0.12
         else if (lr < 0.78) baseOp = 1
         else                baseOp = (1 - lr) / 0.22
 
-        // Per-ember flicker
         const flick = 0.52 + 0.48 * Math.sin(e.life * e.flickerRate + e.flickerPhase)
         const op    = Math.max(0, Math.min(1, baseOp * flick))
         if (op < 0.01) continue
 
-        // Size pulse
         const r = e.baseR * (0.80 + 0.20 * Math.sin(e.life * e.flickerRate * 0.65))
-
         const [rc, gc, bc] = e.col
 
-        // Radial glow halo
         const glowR = r * 5.5
         const g = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, glowR)
         g.addColorStop(0, `rgba(${rc},${gc},${bc},${(op * 0.55).toFixed(3)})`)
@@ -387,7 +385,6 @@
         ctx.fillStyle = g
         ctx.fill()
 
-        // Core bright dot
         ctx.beginPath()
         ctx.arc(e.x, e.y, r, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255,248,210,${op.toFixed(3)})`
